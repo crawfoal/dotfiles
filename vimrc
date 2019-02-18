@@ -1,17 +1,20 @@
-
-" An example for a vimrc file.
+"===============================================================================
+"                              Amanda's vimrc
+"===============================================================================
 "
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2017 Sep 20
+" Author:       Amanda Dolan
+" Source:       https://github.com/crawfoal/dotfiles
+" Forked from:  auto-generated vimrc (I think?)
+"               Bram Moolenaar <Bram@vim.org>
+"               last revision 2017 Sep 20
 "
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
+"-------------------------------------------------------------------------------
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
+
+" Use the space key as our leader. Put this near the top of your vimrc
+let mapleader = "\<Space>"
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -39,6 +42,9 @@ Plugin 'janko-m/vim-test'
 Plugin 'christoomey/vim-tmux-runner'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tpope/vim-commentary'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -112,8 +118,8 @@ if has('syntax') && has('eval')
   packadd! matchit
 endif
 
-set number
-set numberwidth=5
+set number             " display line numbers beside buffer
+set numberwidth=5      " char width of the line number column
 set autoindent
 set nobackup
 set writebackup
@@ -157,4 +163,17 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+nmap 0 ^
+nmap j gj
+nmap k gk
+command! Q q " quit when I accidentally type :Q instead of :q
+command! Qall qall
+command! QA qall
+nmap <C-s> :w<cr>
+imap <C-s> <esc>:w<cr>
+
+" Make CtrlP use ag for listing the files. Way faster and no useless files.
+let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+let g:ctrlp_use_caching = 0
 
