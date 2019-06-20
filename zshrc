@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+export PATH=/Users/amanda.dolan/Library/Python/3.7/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/amanda.dolan/.oh-my-zsh"
@@ -111,6 +111,12 @@ alias h="heroku"
 alias hlr="heroku local:run"
 alias hlrbe="heroku local:run bundle exec"
 alias ccdeploy="chk start ~/checkcheckit/vault/checklists/deploy.md"
+alias ccbilling="chk start ~/checkcheckit/vault/checklists/billing.md"
+function gdb {
+  current_branch=$(git branch --no-color | grep \* | cut -d ' ' -f2)
+  fork_point=$(git merge-base --fork-point master $current_branch)
+  git diff $fork_point $current_branch
+}
 
 . $HOME/.asdf/asdf.sh
 
@@ -119,13 +125,16 @@ alias ccdeploy="chk start ~/checkcheckit/vault/checklists/deploy.md"
 unsetopt nomatch
 
 # Auto start tmux
-_not_inside_tmux() { [[ -z "$TMUX" ]] }
+# _not_inside_tmux() { [[ -z "$TMUX" ]] }
 
-ensure_tmux_is_running() {
-  if _not_inside_tmux; then
-    tat
-  fi
-}
+# ensure_tmux_is_running() {
+#   if _not_inside_tmux; then
+#     tat
+#   fi
+# }
 
-ensure_tmux_is_running
+# ensure_tmux_is_running
 
+
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=/Users/amanda.dolan/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;

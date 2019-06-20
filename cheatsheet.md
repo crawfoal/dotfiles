@@ -50,6 +50,8 @@ A cheatsheet showing my key bindings for the stuff I do most often.
     >
 - Re-format / Fix indentation and break long lines
     =
+- Reflow paragraph
+    gqip
 - Change (deletes and then brings you into insert mode)
     c
 - Repeate previous command
@@ -105,7 +107,7 @@ Use Ctrl h, j, k, l just like vim text navigation.
 - Open the highlighted file in a new tab
     <C-t>
 - Open the highlighted file in a new split
-    <C-s>
+    <C-x>
 - Open the highlighted file in a new vertical split
     <C-v>
 
@@ -194,7 +196,7 @@ Ctrl + {h, j, k, l} just like vim text navigation.
 - List sessions
     `$ tmux ls`
 - Interactively view session and window list, and choose one
-    <prefix> j
+    <prefix> <C-j>
     `$tmux choose-tree`
 - Move to last session
     <prefix> L
@@ -206,4 +208,29 @@ Ctrl + {h, j, k, l} just like vim text navigation.
 ### Custom
 - Open a new pane to view/edit this cheatsheet
     <prefix> h
+
+## Postgres
+- Where is the data directory?
+    /usr/local/var/postgres (typical location for macs)
+- How do I start the server with pg_ctl?
+    pg_ctl start -D datadir
+  Note: if the current postgres version was installed with asdf, then the
+  datadir is something like this:
+    /Users/amanda.dolan/.asdf/installs/postgres/10.6/data
+  they recommend you start it like this:
+    /Users/amanda.dolan/.asdf/installs/postgres/10.6/bin/pg_ctl -D /Users/amanda.dolan/.asdf/installs/postgres/10.6/data -l logfile start
+- List long-running queries:
+```
+SELECT
+  pid,
+  now() - pg_stat_activity.query_start AS duration,
+  query,
+  state
+FROM pg_stat_activity
+WHERE (now() - pg_stat_activity.query_start) > interval '5 minutes';
+```
+
+## Git
+- Diff branch HEAD with branch base (say branch is named 'dev')
+    git diff $(git merge-base --fork-point master dev)...dev
 

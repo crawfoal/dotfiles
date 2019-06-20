@@ -1,0 +1,16 @@
+[user]
+	name = Amanda Dolan
+	email = amandacrawfordalc@gmail.com
+[core]
+	editor = vim
+  pager = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+[color]
+  ui = always
+[color "diff"]
+  commit = green
+  meta = yellow
+  frag = cyan
+  old = red
+  new = green
+	whitespace = red reverse
+

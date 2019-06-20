@@ -66,9 +66,9 @@ set expandtab
 " see :h vundle for more details or wiki for FAQ
 let g:airline_theme='solarized'
 let g:airline_theme_solarized_bg='dark'
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsExpandTrigger="<c-b>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Hook vim-test into Vim Test Runner (VTR)
 let test#strategy = "vtr"
@@ -170,10 +170,16 @@ nmap k gk
 command! Q q " quit when I accidentally type :Q instead of :q
 command! Qall qall
 command! QA qall
-nmap <C-s> :w<cr>
-imap <C-s> <esc>:w<cr>
+nmap <D-s> :w<cr>
+imap <D-s> <esc>:w<cr>
 
 " Make CtrlP use ag for listing the files. Way faster and no useless files.
 let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
 let g:ctrlp_use_caching = 0
+
+" Split edit your vimrc. Type space, v, r in sequence to trigger
+nmap <leader>vr :sp $MYVIMRC<cr>
+
+" Source (reload) your vimrc. Type space, s, o in sequence to trigger
+nmap <leader>so :source $MYVIMRC<cr>
 
