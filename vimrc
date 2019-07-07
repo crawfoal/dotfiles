@@ -15,6 +15,8 @@ filetype off                  " required
 
 " Use the space key as our leader. Put this near the top of your vimrc
 let mapleader = "\<Space>"
+set pyxversion=3
+set encoding=utf-8
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -35,7 +37,6 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'elixir-editors/vim-elixir'
 Plugin 'powerline/powerline-fonts'
 "Plugin 'Valloric/YouCompleteMe'
-Plugin 'Shougo/deoplete.nvim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'jiangmiao/auto-pairs'
@@ -47,6 +48,11 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-commentary'
+" Deoplete needs the two packages that follow, as well as pynvim, which can be
+" installed with pip3 install pynvim
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'roxma/vim-hug-neovim-rpc'
+Plugin 'roxma/nvim-yarp'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
