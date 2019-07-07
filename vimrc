@@ -34,8 +34,10 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'elixir-editors/vim-elixir'
 Plugin 'powerline/powerline-fonts'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Shougo/deoplete.nvim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'janko-m/vim-test'
@@ -64,8 +66,23 @@ set expandtab
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
-let g:airline_theme='solarized'
+let g:deoplete#enable_at_startup = 1
+let g:airline_theme='angr'
 let g:airline_theme_solarized_bg='dark'
+let g:airline_section_b = ''
+let g:airline_section_z = '%3p%% %3l/%L:%3v'
+let g:airline_mode_map = {
+  \ '__' : '-',
+  \ 'n'  : 'N',
+  \ 'i'  : 'I',
+  \ 'R'  : 'R',
+  \ 'c'  : 'C',
+  \ 'v'  : 'V',
+  \ 'V'  : 'V',
+  \ '' : 'V',
+  \ 's'  : 'S',
+  \ }
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 let g:UltiSnipsExpandTrigger="<c-b>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
@@ -129,7 +146,7 @@ set textwidth=80
 set colorcolumn=+1
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme gruvbox
 
 " allow pane navigation without prefix
 nnoremap <C-J> <C-W><C-J>

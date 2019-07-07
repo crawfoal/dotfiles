@@ -112,6 +112,7 @@ alias hlr="heroku local:run"
 alias hlrbe="heroku local:run bundle exec"
 alias ccdeploy="chk start ~/checkcheckit/vault/checklists/deploy.md"
 alias ccbilling="chk start ~/checkcheckit/vault/checklists/billing.md"
+alias gulc="git reset --soft HEAD~1"
 function gdb {
   current_branch=$(git branch --no-color | grep \* | cut -d ' ' -f2)
   fork_point=$(git merge-base --fork-point master $current_branch)
