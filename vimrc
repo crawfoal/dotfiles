@@ -36,7 +36,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'elixir-editors/vim-elixir'
 Plugin 'powerline/powerline-fonts'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'jiangmiao/auto-pairs'
@@ -50,9 +50,9 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-commentary'
 " Deoplete needs the two packages that follow, as well as pynvim, which can be
 " installed with pip3 install pynvim
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'roxma/vim-hug-neovim-rpc'
-Plugin 'roxma/nvim-yarp'
+"Plugin 'Shougo/deoplete.nvim'
+"Plugin 'roxma/vim-hug-neovim-rpc'
+"Plugin 'roxma/nvim-yarp'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -72,7 +72,7 @@ set expandtab
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 let g:airline_theme='angr'
 let g:airline_theme_solarized_bg='dark'
 let g:airline_section_b = ''
@@ -102,6 +102,15 @@ nmap <silent> t<C-f> :TestFile<CR>
 nmap <silent> t<C-s> :TestSuite<CR>
 nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
+
+" Add shortcuts for Vim Test Runner (VTR)
+nmap <silent> or :VtrOpenRunner<CR>
+vmap <silent> rl :VtrSendLinesToRunner<CR>
+
+" VTR settings for Python
+let g:VtrStripLeadingWhitespace = 0
+let g:VtrClearEmptyLines = 0
+let g:VtrAppendNewline = 1
 
 " Put your non-Plugin stuff after this line
 

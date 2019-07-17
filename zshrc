@@ -1,7 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export PATH=/Users/amanda.dolan/Library/Python/3.7/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
+#export PATH=/usr/local/anaconda3/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/amanda.dolan/.oh-my-zsh"
@@ -66,6 +67,7 @@ DEFAULT_USER="amanda.dolan"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  asdf
   git
 )
 
@@ -139,3 +141,4 @@ unsetopt nomatch
 
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=/Users/amanda.dolan/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
