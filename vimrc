@@ -103,9 +103,19 @@ nmap <silent> t<C-s> :TestSuite<CR>
 nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
 
-" Add shortcuts for Vim Test Runner (VTR)
-nmap <silent> or :VtrOpenRunner<CR>
-vmap <silent> rl :VtrSendLinesToRunner<CR>
+" Add shortcuts for Vim Tmux Runner (VTR)
+nnoremap <leader>va :VtrAttachToPane<cr>
+nnoremap <leader>ror :VtrReorientRunner<cr>
+nnoremap <leader>sc :VtrSendCommandToRunner<cr>
+nnoremap <leader>sl :VtrSendLinesToRunner<cr>
+vnoremap <leader>sl :VtrSendLinesToRunner<cr>
+nnoremap <leader>or :VtrOpenRunner<cr>
+nnoremap <leader>kr :VtrKillRunner<cr>
+nnoremap <leader>fr :VtrFocusRunner<cr>
+nnoremap <leader>dr :VtrDetachRunner<cr>
+nnoremap <leader>cr :VtrClearRunner<cr>
+nnoremap <leader>fc :VtrFlushCommand<cr>
+nnoremap <leader>sf :VtrSendFile<cr>
 
 " VTR settings for Python
 let g:VtrStripLeadingWhitespace = 0
