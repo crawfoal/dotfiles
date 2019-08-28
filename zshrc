@@ -113,7 +113,7 @@ alias h="heroku"
 alias hlr="heroku local:run"
 alias hlrbe="heroku local:run bundle exec"
 alias ccdeploy="chk start ~/checkcheckit/vault/checklists/deploy.md"
-alias ccbilling="chk start ~/checkcheckit/vault/checklists/billing.md --live"
+alias ccbilling="chk start --live ~/checkcheckit/vault/checklists/billing.md"
 alias gulc="git reset --soft HEAD~1"
 alias ag="ag --path-to-ignore ~/.ignore"
 function gdb {
