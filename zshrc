@@ -113,8 +113,9 @@ alias h="heroku"
 alias hlr="heroku local:run"
 alias hlrbe="heroku local:run bundle exec"
 alias ccdeploy="chk start ~/checkcheckit/vault/checklists/deploy.md"
-alias ccbilling="chk start ~/checkcheckit/vault/checklists/billing.md"
+alias ccbilling="chk start ~/checkcheckit/vault/checklists/billing.md --live"
 alias gulc="git reset --soft HEAD~1"
+alias ag="ag --path-to-ignore ~/.ignore"
 function gdb {
   current_branch=$(git branch --no-color | grep \* | cut -d ' ' -f2)
   fork_point=$(git merge-base --fork-point master $current_branch)
@@ -142,3 +143,6 @@ unsetopt nomatch
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=/Users/amanda.dolan/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 
+
+# added by travis gem
+[ -f /Users/amanda.dolan/.travis/travis.sh ] && source /Users/amanda.dolan/.travis/travis.sh

@@ -96,6 +96,11 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " Hook vim-test into Vim Test Runner (VTR)
 let test#strategy = "vtr"
 
+" Specify test runners
+let test#python#runner = 'nose2'
+let test#python#nose2#file_pattern = 'test_*'
+let test#python#nose2#executable = 'pipenv run nose2'
+
 " Add shortcuts for vim-test
 nmap <silent> t<C-n> :TestNearest<CR>
 nmap <silent> t<C-f> :TestFile<CR>
