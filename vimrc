@@ -36,7 +36,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'elixir-editors/vim-elixir'
 Plugin 'powerline/powerline-fonts'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'jiangmiao/auto-pairs'
@@ -49,10 +49,11 @@ Plugin 'tpope/vim-repeat'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-commentary'
 " Deoplete needs the two packages that follow, as well as pynvim, which can be
-" installed with pip3 install pynvim
-"Plugin 'Shougo/deoplete.nvim'
-"Plugin 'roxma/vim-hug-neovim-rpc'
-"Plugin 'roxma/nvim-yarp'
+" installed with pip3 install pynvim. Alternatively install vim8 with python
+" 3 support via `brew install vim --with-python3`.
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'roxma/vim-hug-neovim-rpc'
+Plugin 'roxma/nvim-yarp'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

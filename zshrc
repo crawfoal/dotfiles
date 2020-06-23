@@ -71,6 +71,19 @@ plugins=(
   git
 )
 
+# don't raise permissions error
+export ZSH_DISABLE_COMPFIX=true
+
+# set up asdf
+. $(brew --prefix asdf)/asdf.sh
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 # The following will make it possible to start a Heroku sudo shell via
@@ -122,10 +135,6 @@ function gdb {
   git diff $fork_point $current_branch
 }
 
-. $HOME/.asdf/asdf.sh
-
-. $HOME/.asdf/completions/asdf.bash
-
 unsetopt nomatch
 
 # Auto start tmux
@@ -139,10 +148,8 @@ unsetopt nomatch
 
 # ensure_tmux_is_running
 
-
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=/Users/amanda.dolan/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
-
 
 # added by travis gem
 [ -f /Users/amanda.dolan/.travis/travis.sh ] && source /Users/amanda.dolan/.travis/travis.sh
