@@ -93,3 +93,24 @@ if ! [ -x "$(command -v hub)" ]; then
 else
   echo "hub found!"
 fi
+
+# Heroku specific
+
+# I'd prefer to use something like asdf-postgres, but I've had some issues with
+# it in the past, and it would also require the rest of my team to use it (at
+# least work around having it in the .tool-versions file for each project).
+if ! [ -x "$(command -v psql)" ]; then
+  echo "Now installing postgresql..."
+  brew install postgresql
+  brew services start postgresql
+else
+  echo "postgresql found!"
+fi
+
+if ! [ -x "$(command -v heroku)" ]; then
+  echo "Now installing heroku cli..."
+  brew tap heroku/brew && brew install heroku
+  heroku autocomplete --refresh-cache
+else
+  echo "heroku cli found!"
+fi
