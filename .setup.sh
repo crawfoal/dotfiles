@@ -22,11 +22,24 @@ else
   echo "asdf found!"
 fi
 
-# install latest python, set global
-# remember to reshim
-# may need to source .zshrc again (do it just to be safe)
+if ! asdf plugin list | grep python > /dev/null ; then
+  asdf plugin add python
 
-if vim --version | grep '\-python3' ; then
+  # install latest python (do this before installing vim w/ brew so that you get
+  # vim w/ python3 compatibility)
+  system_python = python -V | grep -E -o '[0-9\.]*$'
+  latest_python = asdf list all python | grep -E -x '[0-9\.]*' | tail -1
+  asdf install python $(latest_python)
+  asdf reshim python $(latest_python)
+  asdf install python $(system_python)
+  asdf reshim python $(system_python)
+  asdf global python $(latest_python) $(system_python)
+  source .zshrc
+else
+  echo "python plugin found! (assuming that python >= 3 is also installed)"
+fi
+
+if vim --version | grep '\-python3' > /dev/null ; then
   echo "Now installing vim with python3 via brew.."
   # since brew 1.6.0, vim automatically comes with python3 support
   brew install vim
@@ -35,7 +48,7 @@ else
  echo "vim with python3 support found!"
 fi
 
-if ! [ -f ~/.vim/bundle/Vundle.vim ]; then
+if [ -f ~/.vim/bundle/Vundle.vim ]; then
   echo "Now installing Vundle (for vim)..."
   echo "Warning: It is assumed that your .vimrc already has config for Vundle."
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -44,8 +57,32 @@ else
   echo "Vundle (for vim) found!"
 fi
 
-# install tmux
+# the version of git that you get from homebrew supports more detailed diffs
+if find -L /usr -name diff-highlight -type f | grep diff-highlight > /dev/null ; then
+  echo "Now installing git with brew..."
+  brew install git
+  source ~/.zshrc
+else
+  echo "git from brew found!"
+fi
 
-# instal tmate
+if ! [ -x "$(command -v tmux)" ]; then
+  echo "Now installing tmux..."
+  brew install tmux
+else
+  echo "tmux found!"
+fi
 
-# install hub
+if ! [ -x "$(command -v tmate)" ]; then
+  echo "Now installing tmate..."
+  brew install tmate
+else
+  echo "tmate found!"
+fi
+
+if ! [ -x "$(command -v hub)" ]; then
+  echo "Now installing hub..."
+  brew install hub
+else
+  echo "hub found!"
+fi
