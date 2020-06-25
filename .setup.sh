@@ -15,6 +15,13 @@ else
   echo "oh-my-zsh found!"
 fi
 
+if ! [ -x "$(command -v ag)" ]; then
+  echo "Now installing silver searcher..."
+  brew install the_silver_searcher
+else
+  echo "silver searcher found!"
+fi
+
 if ! [ -x "$(command -v asdf)" ]; then
   echo "Now installing asdf..."
   brew install asdf
