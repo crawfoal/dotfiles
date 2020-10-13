@@ -94,6 +94,13 @@ else
   echo "hub found!"
 fi
 
+if ! [ -d ~/usr/local/Caskroom/alfred ]; then
+  echo "Now installing alfred..."
+  brew cask install alfred
+else
+  echo "alfred found!"
+fi
+
 # Heroku specific
 
 # I'd prefer to use something like asdf-postgres, but I've had some issues with
