@@ -13,6 +13,7 @@
   old = red
   new = green
 	whitespace = red reverse
-
 [pull]
 	ff = only
+[credential]
+	helper = osxkeychain

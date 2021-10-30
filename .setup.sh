@@ -29,13 +29,13 @@ else
   echo "asdf found!"
 fi
 
-if ! asdf plugin list | grep python > /dev/null ; then
-  asdf plugin add python
+if ! asdf plugin-list | grep python > /dev/null ; then
+  asdf plugin-add python https://github.com/danhper/asdf-python.git
 
   # install latest python (do this before installing vim w/ brew so that you get
   # vim w/ python3 compatibility)
-  system_python = python -V | grep -E -o '[0-9\.]*$'
-  latest_python = asdf list all python | grep -E -x '[0-9\.]*' | tail -1
+  system_python=python -V | grep -E -o '[0-9\.]*$'
+  latest_python=asdf list-all python | grep -E -x '[0-9\.]*' | tail -1
   asdf install python $(latest_python)
   asdf reshim python $(latest_python)
   asdf install python $(system_python)
@@ -96,7 +96,7 @@ fi
 
 if ! [ -d ~/usr/local/Caskroom/alfred ]; then
   echo "Now installing alfred..."
-  brew cask install alfred
+  brew install --cask alfred
 else
   echo "alfred found!"
 fi
