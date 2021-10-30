@@ -134,6 +134,11 @@ function gdb {
   fork_point=$(git merge-base --fork-point master $current_branch)
   git diff $fork_point $current_branch
 }
+function gdb_stat {
+  current_branch=$(git branch --no-color | grep \* | cut -d ' ' -f2)
+  fork_point=$(git merge-base --fork-point master $current_branch)
+  git diff --stat $fork_point $current_branch
+}
 
 unsetopt nomatch
 

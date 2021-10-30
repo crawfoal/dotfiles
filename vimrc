@@ -73,6 +73,7 @@ set expandtab
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
+
 "let g:deoplete#enable_at_startup = 1
 let g:airline_theme='angr'
 let g:airline_theme_solarized_bg='dark'
@@ -230,4 +231,7 @@ nmap <leader>vr :sp $MYVIMRC<cr>
 
 " Source (reload) your vimrc. Type space, s, o in sequence to trigger
 nmap <leader>so :source $MYVIMRC<cr>
+
+" shortcut to format json
+command! FormatJSON %!python -m json.tool
 
