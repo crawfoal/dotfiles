@@ -129,6 +129,7 @@ alias ccdeploy="chk start ~/checkcheckit/vault/checklists/deploy.md"
 alias ccbilling="chk start --live ~/checkcheckit/vault/checklists/billing.md"
 alias gulc="git reset --soft HEAD~1"
 alias ag="ag --path-to-ignore ~/.ignore"
+alias pair="upterm host --force-command 'tmux attach -t pair-programming' -- tmux new -t pair-programming"
 function gdb {
   current_branch=$(git branch --no-color | grep \* | cut -d ' ' -f2)
   fork_point=$(git merge-base --fork-point master $current_branch)
@@ -158,3 +159,7 @@ HEROKU_AC_ZSH_SETUP_PATH=/Users/amanda.dolan/Library/Caches/heroku/autocomplete/
 
 # added by travis gem
 [ -f /Users/amanda.dolan/.travis/travis.sh ] && source /Users/amanda.dolan/.travis/travis.sh
+
+# Add emoji to prompt when in upterm session
+export PS1="$([[ ! -z "${UPTERM_ADMIN_SOCKET}"  ]] && echo -e '\xF0\x9F\x86\x99 ')$PS1" # Add an emoji to the prompt if `UPTERM_ADMIN_SOCKET` exists
+

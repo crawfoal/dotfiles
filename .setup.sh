@@ -80,11 +80,11 @@ else
   echo "tmux found!"
 fi
 
-if ! [ -x "$(command -v tmate)" ]; then
-  echo "Now installing tmate..."
-  brew install tmate
+if ! [ -x "$(command -v upterm)" ]; then
+  echo "Now installing upterm..."
+  brew install upterm
 else
-  echo "tmate found!"
+  echo "upterm found!"
 fi
 
 if ! [ -x "$(command -v hub)" ]; then
