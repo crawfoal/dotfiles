@@ -37,7 +37,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'elixir-editors/vim-elixir'
 Plugin 'powerline/powerline-fonts'
 "Plugin 'Valloric/YouCompleteMe'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'christoomey/vim-tmux-navigator'
@@ -75,8 +75,9 @@ set expandtab
 " see :h vundle for more details or wiki for FAQ
 
 "let g:deoplete#enable_at_startup = 1
-let g:airline_theme='angr'
-let g:airline_theme_solarized_bg='dark'
+let g:airline_theme='papercolor'
+"let g:airline_theme='solarized'
+"let g:airline_solarized_bg='light'
 let g:airline_section_b = ''
 let g:airline_section_z = '%3p%% %3l/%L:%3v'
 let g:airline_mode_map = {
@@ -176,9 +177,12 @@ set noswapfile
 set autowrite
 set textwidth=80
 set colorcolumn=+1
-syntax enable
 set background=dark
-colorscheme gruvbox
+syntax enable
+"Light Color Scheme
+"colorscheme tango-morning
+"Dark Color Scheme
+colorscheme PaperColor
 
 " allow pane navigation without prefix
 nnoremap <C-J> <C-W><C-J>
