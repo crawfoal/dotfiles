@@ -75,7 +75,7 @@ plugins=(
 export ZSH_DISABLE_COMPFIX=true
 
 # set up asdf
-. $(brew --prefix asdf)/asdf.sh
+. $(brew --prefix asdf)/libexec/asdf.sh
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
@@ -132,12 +132,12 @@ alias ag="ag --path-to-ignore ~/.ignore"
 alias pair="upterm host --force-command 'tmux attach -t pair-programming' -- tmux new -t pair-programming"
 function gdb {
   current_branch=$(git branch --no-color | grep \* | cut -d ' ' -f2)
-  fork_point=$(git merge-base --fork-point master $current_branch)
+  fork_point=$(git merge-base --fork-point main $current_branch)
   git diff $fork_point $current_branch
 }
 function gdb_stat {
   current_branch=$(git branch --no-color | grep \* | cut -d ' ' -f2)
-  fork_point=$(git merge-base --fork-point master $current_branch)
+  fork_point=$(git merge-base --fork-point main $current_branch)
   git diff --stat $fork_point $current_branch
 }
 
@@ -162,4 +162,6 @@ HEROKU_AC_ZSH_SETUP_PATH=/Users/amanda.dolan/Library/Caches/heroku/autocomplete/
 
 # Add emoji to prompt when in upterm session
 export PS1="$([[ ! -z "${UPTERM_ADMIN_SOCKET}"  ]] && echo -e '\xF0\x9F\x86\x99 ')$PS1" # Add an emoji to the prompt if `UPTERM_ADMIN_SOCKET` exists
+
+export PGSSLMODE=disable
 
