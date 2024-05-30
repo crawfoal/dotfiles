@@ -1,6 +1,37 @@
 # Amanda's Master Cheat Sheet
 A cheatsheet showing my key bindings for the stuff I do most often.
 
+## Postgres
+- Where is the data directory?
+    /usr/local/var/postgres (typical location for macs)
+- How do I start the server with pg_ctl?
+    pg_ctl start -D datadir
+  Note: if the current postgres version was installed with asdf, then the
+  datadir is something like this:
+    /Users/amanda.dolan/.asdf/installs/postgres/10.6/data
+  they recommend you start it like this:
+    /Users/amanda.dolan/.asdf/installs/postgres/10.6/bin/pg_ctl -D /Users/amanda.dolan/.asdf/installs/postgres/10.6/data -l logfile start
+- List long-running queries:
+```
+SELECT
+  pid,
+  now() - pg_stat_activity.query_start AS duration,
+  query,
+  state
+FROM pg_stat_activity
+WHERE (now() - pg_stat_activity.query_start) > interval '5 minutes';
+```
+
+## Git
+- Diff branch HEAD with branch base (say branch is named 'dev')
+    git diff $(git merge-base --fork-point master dev)...dev
+
+## Bash, ZSH
+- Run commands within the scope of an environment defined in a `.env` file:
+    env $(cat .env | xargs) iex -S mix
+  (obviously, you could replace `iex -S mix` with any other command). The file
+  format is `ENV_VAR_NAME=value`, with each entry on it's own line.
+
 ## Terminal
 - Delete from cursor to end of line
     Cmd + K
@@ -208,35 +239,4 @@ Ctrl + {h, j, k, l} just like vim text navigation.
 ### Custom
 - Open a new pane to view/edit this cheatsheet
     <prefix> h
-
-## Postgres
-- Where is the data directory?
-    /usr/local/var/postgres (typical location for macs)
-- How do I start the server with pg_ctl?
-    pg_ctl start -D datadir
-  Note: if the current postgres version was installed with asdf, then the
-  datadir is something like this:
-    /Users/amanda.dolan/.asdf/installs/postgres/10.6/data
-  they recommend you start it like this:
-    /Users/amanda.dolan/.asdf/installs/postgres/10.6/bin/pg_ctl -D /Users/amanda.dolan/.asdf/installs/postgres/10.6/data -l logfile start
-- List long-running queries:
-```
-SELECT
-  pid,
-  now() - pg_stat_activity.query_start AS duration,
-  query,
-  state
-FROM pg_stat_activity
-WHERE (now() - pg_stat_activity.query_start) > interval '5 minutes';
-```
-
-## Git
-- Diff branch HEAD with branch base (say branch is named 'dev')
-    git diff $(git merge-base --fork-point master dev)...dev
-
-## Bash, ZSH
-- Run commands within the scope of an environment defined in a `.env` file:
-    env $(cat .env | xargs) iex -S mix
-  (obviously, you could replace `iex -S mix` with any other command). The file
-  format is `ENV_VAR_NAME=value`, with each entry on it's own line.
 
