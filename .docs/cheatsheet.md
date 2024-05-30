@@ -1,6 +1,17 @@
 # Amanda's Master Cheat Sheet
 A cheatsheet showing my key bindings for the stuff I do most often.
 
+## Bash, ZSH
+- Run commands within the scope of an environment defined in a `.env` file:
+    env $(cat .env | xargs) iex -S mix
+  (obviously, you could replace `iex -S mix` with any other command). The file
+  format is `ENV_VAR_NAME=value`, with each entry on it's own line.
+
+## Git
+- Diff branch HEAD with branch base (say branch is named 'dev')
+    git diff $(git merge-base --fork-point master dev)...dev
+  (but the .zshrc in this repo has an alias set up for this - `gdb`)
+
 ## Postgres
 - Where is the data directory?
     /usr/local/var/postgres (typical location for macs)
@@ -21,16 +32,6 @@ SELECT
 FROM pg_stat_activity
 WHERE (now() - pg_stat_activity.query_start) > interval '5 minutes';
 ```
-
-## Git
-- Diff branch HEAD with branch base (say branch is named 'dev')
-    git diff $(git merge-base --fork-point master dev)...dev
-
-## Bash, ZSH
-- Run commands within the scope of an environment defined in a `.env` file:
-    env $(cat .env | xargs) iex -S mix
-  (obviously, you could replace `iex -S mix` with any other command). The file
-  format is `ENV_VAR_NAME=value`, with each entry on it's own line.
 
 ## Terminal
 - Delete from cursor to end of line
