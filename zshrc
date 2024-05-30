@@ -4,6 +4,13 @@
 #export PATH=/usr/local/anaconda3/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
 export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 
+# Uncomment to force erlang to compile with openssl 1
+#export KERL_CONFIGURE_OPTIONS="--with-ssl=$(brew --prefix openssl@1.1)"
+#export PATH="$(brew --prefix openssl@1.1)/bin:$PATH"
+#export LDFLAGS="-L$(brew --prefix openssl@1.1)/lib"
+#export CPPFLAGS="-I$(brew --prefix openssl@1.1)/include"
+#export PKG_CONFIG_PATH="$(brew --prefix openssl@1.1)/lib/pkgconfig"
+
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
@@ -86,10 +93,6 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-# The following will make it possible to start a Heroku sudo shell via
-# `heroku-sudo-shell` command
-# source ~/.heroku/heroku-sudo-shell.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -98,6 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
+export EDITOR='vim'
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
@@ -116,6 +120,11 @@ export TERM="xterm-256color"
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
+
+# The following will make it possible to start a Heroku sudo shell via
+# `heroku-sudo-shell` command
+# source ~/.heroku/heroku-sudo-shell.sh
+
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -125,11 +134,11 @@ alias tmux="tmux -2"
 alias h="heroku"
 alias hlr="heroku local:run"
 alias hlrbe="heroku local:run bundle exec"
-alias ccdeploy="chk start ~/checkcheckit/vault/checklists/deploy.md"
 alias ccbilling="chk start --live ~/checkcheckit/vault/checklists/billing.md"
 alias gulc="git reset --soft HEAD~1"
 alias ag="ag --path-to-ignore ~/.ignore"
-alias pair="upterm host --force-command 'tmux attach -t pair-programming' -- tmux new -t pair-programming"
+alias dcup="docker-compose up"
+alias dcrun="docker-compose run --rm"
 function gdb {
   current_branch=$(git branch --no-color | grep \* | cut -d ' ' -f2)
   fork_point=$(git merge-base --fork-point main $current_branch)
@@ -156,9 +165,6 @@ unsetopt nomatch
 
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=/Users/amanda.dolan/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
-
-# added by travis gem
-[ -f /Users/amanda.dolan/.travis/travis.sh ] && source /Users/amanda.dolan/.travis/travis.sh
 
 # Add emoji to prompt when in upterm session
 export PS1="$([[ ! -z "${UPTERM_ADMIN_SOCKET}"  ]] && echo -e '\xF0\x9F\x86\x99 ')$PS1" # Add an emoji to the prompt if `UPTERM_ADMIN_SOCKET` exists

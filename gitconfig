@@ -3,7 +3,7 @@
 	email = amandacrawfordalc@gmail.com
 [core]
 	editor = vim
-  pager = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+	pager = /opt/homebrew/Cellar/git/2.45.1/share/git-core/contrib/diff-highlight/diff-highlight | less
 [color]
   ui = always
 [color "diff"]
